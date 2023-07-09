@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etch a Sketch</title>
+    <link href="style.css" rel="stylesheet">
+    <script src="main.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Etch-a-Sketch</h1>
+    </header>
+    <main>
+        <div class="button-container">
+            <input id="color" type="color">
+            <button id="eraser">eraser</button>
+            <div id="range-container">
+                <h3 id="range-indicator">How big?</h3>
+                <input id="range" type="range" min="16" max="64">
+            </div>
+        </div>
+        <div class="container">
+            <div id="grid-container"></div>
+        </div>
+    </main>
+    <footer></footer>
+</body>
+</html>
