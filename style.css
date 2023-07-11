@@ -109,6 +109,7 @@ input[type="color"]{
 input[type="range"]::-moz-range-track {
     background: #fc37ff;
     height: 0.5rem;
+    border-radius: 10px;
 }
 
 /******* Todos los demas navegadores**********/
