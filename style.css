@@ -1,42 +1,72 @@
+@font-face {
+    font-family: 'ARCADE_R';
+    src: url('fonts/ARCADE_R.TTF');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Xtradex';
+    src: url('fonts/Xtradex.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Rage';
+    src: url('fonts/rage\ italic.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
 *{
-    margin: 0;
     padding: 0;
+    margin: 0;
 }
 header{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #ddd;
-    border-bottom: 2px solid black;
+    background-image: linear-gradient(#00d4ff 0%, #ce33d1 100%);
 }
 header h1{
-    font-size: 42px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 72px;
+    color: white;
+    text-shadow: 4px 0 #ce33d1, -4px 0 #ce33d1, 0 4px #ce33d1, 0 -4px #ce33d1,
+               2px 2px #ce33d1, -2px -2px #ce33d1, 2px -2px #ce33d1, -2px 2px #ce33d1;
+    font-family: 'Rage';
+    padding: 25px 0px;
 }
 main{
     display: grid;
     grid-template-columns: 1fr 4fr;
-    column-gap: 10px;
 }
 .button-container{
+    padding: 50px;
+    background-color: #ce33d1;
+}
+.button-hud{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    background-color: green;
-    height: 100vh;
+    background-color: #00d4ff;
+    border: 5px solid rgb(27, 27, 27);
+    border-radius: 20px 20px 20px 20px;
+    height: 80vh;
 }
-.button-container button{
+.button-hud button{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
     font-size: 22px;
-    border-radius: 18px;
-    background-color: #8fb2f8;
+    border-radius: 10px;
+    background-color: #00d4ff;
     padding: 10px 20px;
+}
+.button-hud .on{
+    background-color: #fc37ff;
 }
 .container{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #ffffff;
+    background-color: #ce33d1;
 }
 #grid-container{
     display: flex;
@@ -45,7 +75,21 @@ main{
     width: 600px;
     height: 600px;
     border: 5px solid rgb(40, 40, 113);
-    box-shadow: 0 0 6.5em rgba(0, 0, 0, 0.45);
+    box-shadow: 0 0 2.5em rgba(0, 0, 0, 0.25);
+}
+#grid-container h1{
+    font-family: 'Xtradex';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    width: 100%;
+}
+
+input[type="color"]{
+    width: 6em;
+    height: 6em;
+    border: none;
 }
 #range-container{
     display: flex;
@@ -53,15 +97,60 @@ main{
     align-items: center;
 }
 #range-indicator{
-    color: black;
+    font-family: 'Xtradex';
+    color: #ce33d1;
+    font-size: 36px;
+    padding-bottom: 20px;
 }
+#range{
+    background-color: #ce33d1;
+}
+/******** Firefox ********/
+input[type="range"]::-moz-range-track {
+    background: #fc37ff;
+    height: 0.5rem;
+}
+input[type="range"]::-moz-range-thumb {
+    border: none; /*Removes extra border that FF applies*/
+    border-radius: 100%; /*Removes default border-radius that FF applies*/
+    background-color: #00d4ff;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+/******* Todos los demas navegadores**********/
+input[type="range"]::-webkit-slider-runnable-track {
+    background: #fc37ff;
+    height: 0.6rem;
+    border-radius: 20px;
+}
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    margin-top: -4px; /* Centers thumb on the track */
+    background-color: #00d4ff;
 
-@media(max-width: 700px){
-    .button-container{ grid-column: span 5;
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 100%; 
+}
+@media(min-width: 1050px){
+    .button-hud{
+        width: 270px;
+    }
+}
+@media(max-width: 1050px){
+    .button-container{
+        grid-column: span 5;
+    }
+    .button-hud{ grid-column: span 5;
         flex-direction: row;
         height: 20vh;
     }
     .container{
         grid-column: span 5;
+    }
+    header h1{
+        font-size: 36px;
+        display: flex;
     }
 }

@@ -11,7 +11,16 @@ OK, lo hice, al final no fue tan engorroso como pensé que sería, bastó con re
 
 Ahora mi conflicto es otro, ya tengo hechos los event listeners, pero no puedo lograr que los cuadrados ocupen el total del contenedor
 
+---------------------------------
+
+Pude resolver todos mis problemas, soy un capo
 */ 
+
+
+
+
+
+
 const range = document.getElementById('range')
 const rangeIndicator = document.getElementById('range-indicator')
 
@@ -19,6 +28,26 @@ range.addEventListener('change', () =>{
     rangeIndicator.innerText = `${range.value} x ${range.value}`;
     createSketch();
 })
+
+const squares = document.getElementsByClassName('square')
+
+const borders = document.getElementById('borders')
+let isBordersOn = false;
+borders.addEventListener('click', () => {
+    if (isBordersOn) {
+      borders.classList.remove('on');
+      isBordersOn = false;
+      for (let i = 0; i < squares.length; i++) {
+        squares[i].style.border = 'none';
+      }
+    } else {
+      borders.classList.add('on');
+      isBordersOn = true;
+      Array.from(squares).forEach(function(square) {
+        square.style.border = '1px solid rgb(27, 27, 27)';
+      });
+    }
+  });
 
 const gridContainer = document.getElementById('grid-container');
 
@@ -28,11 +57,9 @@ fila.style.width = '100%';
 
 const squareOriginal = document.createElement('div')
 squareOriginal.style.flexGrow = '1';
-
-squareOriginal.style.border = '1px solid rgb(45, 45, 45)';
 squareOriginal.style.backgroundColor = 'white';
 
-gridContainer.appendChild(fila);
+
 
 function createSketch(){
 
@@ -69,8 +96,13 @@ const color = document.getElementById('color')
 
 squares.forEach(function(square) {
     square.addEventListener('mousedown', function() {
-            square.style.backgroundColor = color.value;
-            isMouseDown = true;
+            if(isEraserOn){
+                square.style.backgroundColor = 'white';
+                isMouseDown = true;
+            }else{
+                square.style.backgroundColor = color.value;
+                isMouseDown = true;
+            }
     })
 })
 squares.forEach(function(square) {
@@ -81,7 +113,11 @@ squares.forEach(function(square) {
 squares.forEach(function(square) {
     square.addEventListener('mousemove', function() {
         if(isMouseDown){
+            if(isEraserOn){
+                square.style.backgroundColor = 'white';
+            }else{
             square.style.backgroundColor = color.value;
+            }
         }
     })
 })
@@ -90,9 +126,18 @@ squares.forEach(function(square) {
 }
 
 
-
-
+const eraser = document.getElementById('eraser')
+eraser.addEventListener('click', ()=>{
+    if (isEraserOn) {
+        eraser.classList.remove('on');
+        isEraserOn = false;
+    } else {
+        eraser.classList.add('on');
+        isEraserOn = true;
+    }
+})
 
 let isMouseDown = false;
+let isEraserOn = false;
 
 range.value = 16;

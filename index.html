@@ -9,19 +9,22 @@
 </head>
 <body>
     <header>
-        <h1>Etch-a-Sketch</h1>
+        <h1>ETCH A SKETCH</h1>
     </header>
     <main>
         <div class="button-container">
-            <input id="color" type="color">
-            <button id="eraser">eraser</button>
-            <div id="range-container">
-                <h3 id="range-indicator">How big?</h3>
-                <input id="range" type="range" min="16" max="64">
+            <div class="button-hud">
+                <input id="color" type="color">
+                <button id="eraser">eraser</button>
+                <button id="borders">borders</button>
+                <div id="range-container">
+                    <h3 id="range-indicator">Generate!</h3>
+                    <input id="range" type="range" min="16" max="64">
+                </div>
             </div>
         </div>
         <div class="container">
-            <div id="grid-container"></div>
+            <div id="grid-container"><h1>Generate your pallete</h1></div>
         </div>
     </main>
     <footer></footer>
