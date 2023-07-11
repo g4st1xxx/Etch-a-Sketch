@@ -110,13 +110,7 @@ input[type="range"]::-moz-range-track {
     background: #fc37ff;
     height: 0.5rem;
 }
-input[type="range"]::-moz-range-thumb {
-    border: none; /*Removes extra border that FF applies*/
-    border-radius: 100%; /*Removes default border-radius that FF applies*/
-    background-color: #00d4ff;
-    height: 1.5rem;
-    width: 1.5rem;
-}
+
 /******* Todos los demas navegadores**********/
 input[type="range"]::-webkit-slider-runnable-track {
     background: #fc37ff;
